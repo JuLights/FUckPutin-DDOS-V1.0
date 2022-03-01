@@ -25,16 +25,7 @@ namespace DDOS_V1._0
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new mainDDOS());
-
-            //Thread thread1 = new Thread(Asd);
-            //Thread thread2 = new Thread(Asd);
-            //Thread thread3 = new Thread(Asd);
         }
-
-        //public static void Asd()
-        //{
-        //    var kk = "asd";
-        //}
 
         
 
